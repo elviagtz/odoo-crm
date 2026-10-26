@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Hereda la vista de formulario de contactos (base.view_partner_form)
+        para asegurar los widgets nativos de email y teléfono, que marcan
+        visualmente el campo cuando el formato es inválido.
+    -->
+    <record id="partner_validations_view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.form.partner.validations</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- Email: opcional (anula el required heredado del core) y con widget nativo. -->
+            <field name="email" position="attributes">
+                <attribute name="widget">email</attribute>
+                <attribute name="required">0</attribute>
+            </field>
+            <!-- Teléfono: opcional, con widget nativo. -->
+            <field name="phone" position="attributes">
+                <attribute name="widget">phone</attribute>
+                <attribute name="required">0</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>
